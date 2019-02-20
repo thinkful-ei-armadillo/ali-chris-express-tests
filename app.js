@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
@@ -27,22 +29,22 @@ app.get('/frequency', (req, res) => {
       return acc;
     }, {});
 
-    const unique = Object.keys(counts).length;
-    const average = s.length / unique;
-    let highest = '';
-    let highestVal = 0;
+  const unique = Object.keys(counts).length;
+  const average = s.length / unique;
+  let highest = '';
+  let highestVal = 0;
 
-    Object.keys(counts).forEach(k => {
-      if(counts[k] > highestVal) {
-        highestVal = counts[k];
-        highest = k;
-      }
-    });
+  Object.keys(counts).forEach(k => {
+    if(counts[k] > highestVal) {
+      highestVal = counts[k];
+      highest = k;
+    }
+  });
 
-    counts.unique = unique;
-    counts.average = average;
-    counts.highest = highest;
-    res.json(counts);
+  counts.unique = unique;
+  counts.average = average;
+  counts.highest = highest;
+  res.json(counts);
 });
 
 
