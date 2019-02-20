@@ -9,9 +9,18 @@ describe('GET /frequency tests', () => {
         .query({s: 'sssss'})
         .expect(200)
         .then(res => {
-            expect(res.body).includes({"highest": "s"})
+            expect(res.body).includes({"highest": "s"});
+            expect(res.body).includes({"average":5});
         })
     })
+    // it('should average 1 when unique is equal to length', () => {
+    //     return request(app)
+    //     .get('/frequency')
+    //     .query({s: 'qwerty'})
+    //     .expect(200)
+    //     .then(res => {
+    //         expect(res.body).includes({"average": 1})
+    //     })
 })
 
 
